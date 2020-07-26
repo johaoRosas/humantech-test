@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Estás seguro?</h2>
+
+<mat-dialog-content>
+	Se eliminará <strong>"{{ data.title }}"</strong>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+	<button mat-button [mat-dialog-close]="true">Ok</button>
+	<button mat-button mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>

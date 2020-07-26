@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="header">
+		<h1>PELICULAS</h1>
+		<span class="spacer"></span>
+		<a mat-fab color="accent" (click)="confirmAdd()">
+			<mat-icon aria-label="add">add</mat-icon>
+		</a>
+	</div>
+
+	<div class="table-container mat-elevation-z2">
+		<div class="table-header">
+			<mat-form-field>
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar peliculas">
+			</mat-form-field>
+		</div>
+		<mat-table [dataSource]="dataSource">
+
+			<ng-container matColumnDef="id">
+				<mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{ element.id  }} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="title">
+				<mat-header-cell *matHeaderCellDef> Título </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{ element.title | maxChar:30 }} </mat-cell>
+			</ng-container>
+
+
+			<ng-container matColumnDef="created">
+				<mat-header-cell *matHeaderCellDef> F. Publicación </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.created | date }} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="status">
+				<mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="actions">
+				<mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
+				<mat-cell *matCellDef="let element">
+
+					<button mat-icon-button title="remove" (click)="confirmEdit(element)">
+						<mat-icon color="primary">create</mat-icon>
+					</button>
+					<button mat-icon-button title="remove" (click)="confirm(element)">
+						<mat-icon color="primary">remove_circle_outline</mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+	</div>
+</div>

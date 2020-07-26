@@ -1,0 +1,49 @@
+<div class="container">
+	<mat-dialog-content [formGroup]="form">
+		<mat-card-title>{{title}} Película</mat-card-title>
+		<!-- 
+		<form #form="ngForm" (ngSubmit)="onSubmit(form.value)" autocomplete="off"> -->
+		<mat-form-field class="width">
+			<input matInput placeholder="Titulo" formControlName="title">
+		</mat-form-field>
+
+		<div>
+			<mat-form-field class="width">
+				<textarea matInput placeholder="Descripción" formControlName="body" rows="5"></textarea>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+
+				<input matInput [matDatepicker]="myDatepicker" formControlName="created">
+
+				<mat-datepicker-toggle matSuffix [for]="myDatepicker">
+
+				</mat-datepicker-toggle>
+
+				<mat-datepicker #myDatepicker></mat-datepicker>
+
+			</mat-form-field>
+		</div>
+
+		<div>
+			<mat-radio-group formControlName="status" name="status" class="width">
+				<mat-radio-button [value]="statuses[0]">
+					{{ statuses[0] }}
+				</mat-radio-button>
+				<mat-radio-button [value]="statuses[1]">
+					{{ statuses[1] }}
+				</mat-radio-button>
+			</mat-radio-group>
+		</div>
+		<!-- 	</form> -->
+	</mat-dialog-content>
+
+	<mat-dialog-actions>
+		<button color="accent" class="width" mat-raised-button (click)="save()">
+			{{title}}
+		</button>
+	</mat-dialog-actions>
+
+
+</div>
